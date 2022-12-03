@@ -15,6 +15,9 @@ const Wrapper = styled.aside`
     opacity: 0;
     transition: var(--transition);
   }
+
+  // this is the class responsible to show sidebar when window size is greater than 992px
+  
   .show-sidebar {
     z-index: 99;
     opacity: 1;

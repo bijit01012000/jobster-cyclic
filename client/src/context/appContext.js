@@ -2,6 +2,7 @@ import React, { useReducer, useContext } from 'react'
 
 import reducer from './reducer'
 import axios from 'axios'
+// import all actions
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
@@ -30,7 +31,7 @@ import {
   CLEAR_FILTERS,
   CHANGE_PAGE,
 } from './actions'
-
+//get token user and userlocation from localstorage
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
 const userLocation = localStorage.getItem('location')
@@ -100,24 +101,24 @@ const AppProvider = ({ children }) => {
       return Promise.reject(error)
     }
   )
-
+//display alert
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT })
     clearAlert()
   }
-
+//clear alert
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({ type: CLEAR_ALERT })
     }, 3000)
   }
-
+//add user data to local storage
   const addUserToLocalStorage = ({ user, token, location }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
     localStorage.setItem('location', location)
   }
-
+//remove user data from local storage
   const removeUserFromLocalStorage = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
